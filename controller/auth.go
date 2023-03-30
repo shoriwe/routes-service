@@ -7,10 +7,6 @@ import (
 	"github.com/shoriwe/routes-service/models"
 )
 
-func (c *Controller) Register(user *models.User) error {
-	return c.DB.Create(user).Error
-}
-
 func (c *Controller) Login(credentials *models.User) (string, error) {
 	user := &models.User{}
 	fErr := c.DB.Where("username = ? AND deleted_at IS NULL", credentials.Username).First(user).Error

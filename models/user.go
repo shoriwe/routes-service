@@ -56,12 +56,20 @@ func (u *User) BeforeSave(tx *gorm.DB) error {
 		return bErr
 	}
 	if len(u.Password) == 0 {
-		return fmt.Errorf("password is empty")
+		return nil
 	}
 	var err error
 	u.PasswordHash, err = bcrypt.GenerateFromPassword([]byte(u.Password), DefaultPasswordCost)
-	if err != nil {
-		return err
+	return err
+}
+
+func (u *User) BeforeCreate(tx *gorm.DB) error {
+	bErr := u.Model.BeforeSave(tx)
+	if bErr != nil {
+		return bErr
+	}
+	if len(u.PasswordHash) == 0 {
+		return fmt.Errorf("password is empty")
 	}
 	return nil
 }
