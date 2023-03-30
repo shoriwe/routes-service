@@ -18,16 +18,14 @@ func TestHandler_Echo(t *testing.T) {
 	// Tokens
 	token := fmt.Sprintf("Bearer %s", base64.StdEncoding.EncodeToString([]byte(c.Session.New(admin.Claims()))))
 	t.Run("ValidJWT", func(tt *testing.T) {
-		expect.PUT(UserRoute).
+		expect.GET(EchoRoute).
 			WithHeader("Authorization", token).
-			WithJSON(random.User()).
 			Expect().
 			Status(http.StatusOK)
 	})
 	t.Run("InvalidJWT", func(tt *testing.T) {
-		expect.PUT(UserRoute).
+		expect.GET(EchoRoute).
 			WithHeader("Authorization", "Bearer INVALID").
-			WithJSON(random.User()).
 			Expect().
 			Status(http.StatusUnauthorized)
 	})
