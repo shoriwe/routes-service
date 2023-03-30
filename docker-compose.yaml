@@ -1,0 +1,22 @@
+# This docker compose will be used by API developers since it
+# only starts the Databases and expose their ports
+
+version: "3.3"
+
+networks:
+  routes:
+    external: false
+
+services:
+  postgres:
+    networks:
+      - routes
+    container_name: routes-postgres
+    restart: unless-stopped
+    image: postgres:latest
+    ports:
+      - "127.0.0.1:5432:5432"
+    environment:
+      POSTGRES_DB: routes
+      POSTGRES_USER: routes
+      POSTGRES_PASSWORD: routes
