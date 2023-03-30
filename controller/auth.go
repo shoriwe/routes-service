@@ -2,7 +2,6 @@ package controller
 
 import (
 	"fmt"
-	"regexp"
 
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/shoriwe/routes-service/models"
@@ -23,8 +22,6 @@ func (c *Controller) Login(credentials *models.User) (string, error) {
 	}
 	return c.Session.New(user.Claims()), nil
 }
-
-var bearer = regexp.MustCompile(`(?m)^Bearer\s+`)
 
 func (c *Controller) UserValid(user *models.User) (*models.User, error) {
 	credentials := &models.User{}
