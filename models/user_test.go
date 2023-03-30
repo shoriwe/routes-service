@@ -58,9 +58,17 @@ func TestUser_FromClaims(t *testing.T) {
 	}
 	assert.Nil(t, db.AutoMigrate(&User{}))
 	assert.Nil(t, db.Create(u).Error)
-	var u2 User
-	assert.Nil(t, u2.FromClaims(u.Claims()))
-	assert.Equal(t, u.UUID, u2.UUID)
+	t.Run("ValidFromClaims", func(tt *testing.T) {
+		var u2 User
+		assert.Nil(tt, u2.FromClaims(u.Claims()))
+		assert.Equal(tt, u.UUID, u2.UUID)
+	})
+	t.Run("NoUUID", func(tt *testing.T) {
+		var u2 User
+		claims := u.Claims()
+		delete(claims, "uuid")
+		assert.NotNil(tt, u2.FromClaims(claims))
+	})
 }
 
 func TestUser_Authenticate(t *testing.T) {
