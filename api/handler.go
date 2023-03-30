@@ -37,6 +37,10 @@ func New(c *controller.Controller) *gin.Engine {
 	admin.PATCH(UserRoute, h.UpdateUser)
 	admin.POST(UserRoute, h.QueryUsers)
 	// -- Vehicle's CRUD
+	admin.PUT(VehicleRoute, h.CreateVehicle)
+	admin.DELETE(VehicleRouteWithParams, h.DeleteVehicle)
+	admin.PATCH(VehicleRoute, h.UpdateVehicle)
+	admin.POST(VehicleRoute, h.QueryVehicles)
 	// -- API's CRUD
 	// - Vehicles
 	return engine

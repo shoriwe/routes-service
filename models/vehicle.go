@@ -16,6 +16,10 @@ type Vehicle struct {
 }
 
 func (v *Vehicle) BeforeSave(tx *gorm.DB) error {
+	mErr := v.Model.BeforeSave(tx)
+	if mErr != nil {
+		return mErr
+	}
 	if len(v.Name) == 0 {
 		return fmt.Errorf("vehicle no name provided")
 	}
