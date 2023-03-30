@@ -8,25 +8,11 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestController_Register(t *testing.T) {
-	c := NewTest()
-	defer c.Close()
-	t.Run("ValidCredentials", func(tt *testing.T) {
-		user := random.User()
-		assert.Nil(tt, c.Register(user))
-	})
-	t.Run("RepeatedUser", func(tt *testing.T) {
-		user := random.User()
-		assert.Nil(tt, c.Register(user))
-		assert.NotNil(tt, c.Register(user))
-	})
-}
-
 func TestController_Login(t *testing.T) {
 	c := NewTest()
 	defer c.Close()
 	user := random.User()
-	assert.Nil(t, c.Register(user))
+	assert.Nil(t, c.CreateUser(user))
 	t.Run("ValidCredentials", func(tt *testing.T) {
 		token, lErr := c.Login(user)
 		assert.Nil(tt, lErr)
@@ -50,7 +36,7 @@ func TestController_Authorize(t *testing.T) {
 	c := NewTest()
 	defer c.Close()
 	user := random.User()
-	assert.Nil(t, c.Register(user))
+	assert.Nil(t, c.CreateUser(user))
 	t.Run("ValidCredentials", func(tt *testing.T) {
 		token, lErr := c.Login(user)
 		assert.Nil(tt, lErr)
