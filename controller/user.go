@@ -14,12 +14,6 @@ func (c *Controller) UpdateUser(user *models.User) error {
 	return c.DB.Updates(user).Error
 }
 
-type Result[T any] struct {
-	Page       int64 `json:"page"`
-	TotalPages int64 `json:"totalPages"`
-	Results    []T
-}
-
 type UserFilter struct {
 	Page     int64            `json:"page"`
 	PageSize int64            `json:"pageSize"`
