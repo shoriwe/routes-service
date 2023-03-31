@@ -61,3 +61,6 @@ go test -count=1 -v ./...
 
 ## Coverage
 
+|                                                                           Sunburst                                                                           |                                                                         Grid                                                                         |
+| :----------------------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------: |
+| [![sunburst](https://codecov.io/gh/shoriwe/routes-service/branch/main/graphs/sunburst.svg?token=SMCRWGJ4C5)](https://app.codecov.io/gh/shoriwe/routes-service) | [![grid](https://codecov.io/gh/shoriwe/routes-service/branch/main/graphs/tree.svg?token=SMCRWGJ4C5)](https://app.codecov.io/gh/shoriwe/routes-service) |
