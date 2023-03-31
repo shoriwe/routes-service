@@ -4,19 +4,34 @@
 version: "3.3"
 
 networks:
-  routes:
+  server:
     external: false
 
 services:
+  server:
+    networks:
+      - server
+    container_name: server-api
+    restart: unless-stopped
+    image: ghcr.io/shoriwe/routes-service:latest
+    ports:
+      - "127.0.0.1:5000:5000"
+    entrypoint: /bin/sh
+    command:
+      [
+        "-c",
+        "/server --database 'postgres://host=server-postgres user=sulcud password=sulcud dbname=sulcud port=5432 sslmode=disable' :5000"
+      ]
+
   postgres:
     networks:
-      - routes
-    container_name: routes-postgres
+      - server
+    container_name: server-postgres
     restart: unless-stopped
     image: postgres:latest
     ports:
       - "127.0.0.1:5432:5432"
     environment:
-      POSTGRES_DB: routes
-      POSTGRES_USER: routes
-      POSTGRES_PASSWORD: routes
+      POSTGRES_DB: sulcud
+      POSTGRES_USER: sulcud
+      POSTGRES_PASSWORD: sulcud
