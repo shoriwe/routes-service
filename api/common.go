@@ -52,7 +52,7 @@ Public
 
 Admin user can:
 - [X] CRUD users
-- [ ] CRUD vehicles
+- [X] CRUD vehicles
 - [ ] CRUD API keys
 - [ ] Monitor location
 - [ ] Export data

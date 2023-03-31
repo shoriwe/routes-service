@@ -11,8 +11,8 @@ const (
 
 type Location struct {
 	Model
-	VehicleUUID uuid.UUID     `gorm:"name:vehicle_uuid;not null;" json:"vehicle_uuid"`
-	Vehicle     Vehicle       `gorm:"foreignKey:vehicle_uuid;constraint:OnUpdate:CASCADE,OnDelete:CASCADE;" json:"-"`
+	VehicleUUID uuid.UUID     `gorm:"not null;" json:"vehicle_uuid"`
+	Vehicle     Vehicle       `gorm:"foreignKey:VehicleUUID;constraint:OnUpdate:CASCADE,OnDelete:CASCADE;" json:"-"`
 	Latitude    float64       `gorm:"not null;" json:"latitude"`
 	Longitude   float64       `gorm:"not null;" json:"longitude"`
 	Speed       float64       `gorm:"not null;" json:"speed"`

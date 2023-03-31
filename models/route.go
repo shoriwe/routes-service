@@ -16,8 +16,8 @@ const (
 
 type Route struct {
 	Model
-	VehicleUUID uuid.UUID   `gorm:"name:vehicle_uuid;not null;" json:"vehicle_uuid"`
-	Vehicle     Vehicle     `gorm:"foreignKey:vehicle_uuid;constraint:OnUpdate:CASCADE,OnDelete:CASCADE;" json:"-"`
+	VehicleUUID uuid.UUID   `gorm:"not null;" json:"vehicle_uuid"`
+	Vehicle     Vehicle     `gorm:"foreignKey:VehicleUUID;constraint:OnUpdate:CASCADE,OnDelete:CASCADE;" json:"-"`
 	Started     time.Time   `gorm:"default:CURRENT_TIMESTAMP;not null;" json:"started"`
 	Completed   *time.Time  `json:"completed,omitempty"`
 	Status      RouteStatus `gorm:"not null;" json:"status"`
