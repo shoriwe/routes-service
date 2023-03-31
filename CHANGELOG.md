@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/shoriwe/routes-service/compare/v0.0.3...v0.0.4) (2023-03-31)
+
+
+### Bug Fixes
+
+* codecov pipeline ([698a1e5](https://github.com/shoriwe/routes-service/commit/698a1e5dc19585adaf7b017914d1e4ed5f60c10d))
+* updated credentials in testing command ([ba1b458](https://github.com/shoriwe/routes-service/commit/ba1b458e2193be6c23a48d3bc9a110e52f2abcfc))
+
 ### 0.0.3 (2023-03-31)
 
 
