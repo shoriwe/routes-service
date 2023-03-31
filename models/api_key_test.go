@@ -23,4 +23,9 @@ func TestAPIKey(t *testing.T) {
 			Key:         "Test",
 		}).Error)
 	})
+	t.Run("NoDefaultAPIKey", func(tt *testing.T) {
+		assert.Nil(tt, db.Create(&APIKey{
+			VehicleUUID: v.UUID,
+		}).Error)
+	})
 }
