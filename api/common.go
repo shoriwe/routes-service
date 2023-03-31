@@ -53,7 +53,7 @@ Public
 Admin user can:
 - [X] CRUD users
 - [X] CRUD vehicles
-- [ ] CRUD API keys
+- [X] CRUD API keys
 - [ ] Monitor location
 - [ ] Export data
 
@@ -69,6 +69,8 @@ const (
 	UserRouteWithParams    = UserRoute + "/:" + UUIDParam
 	VehicleRoute           = "/vehicle"
 	VehicleRouteWithParams = VehicleRoute + "/:" + UUIDParam
+	APIKeyRoute            = "/keys"
+	APIKeyRouteWithParams  = APIKeyRoute + "/:" + UUIDParam
 	LocationRoute          = "/location"
 	ExportRoute            = "/export"
 	RoutePlanningRoute     = "/route"
