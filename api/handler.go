@@ -26,10 +26,11 @@ func New(c *controller.Controller) *gin.Engine {
 	root.POST(LoginRoute, h.Login)
 	// User auth required
 	user := root.Group(RootRoute, h.CheckJWT)
-	user.GET(EchoRoute, h.Echo)
-	root.GET(LocationConsumerRoute, h.LocationListener)
 	// - All users
+	// -- Echo
+	user.GET(EchoRoute, h.Echo)
 	// -- Monitor Locations
+	root.GET(LocationConsumerRoute, h.LocationListener)
 	// -- Export
 	// - Admin
 	admin := user.Group(RootRoute, h.OnlyAdmin)

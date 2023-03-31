@@ -45,7 +45,7 @@ const (
 
 /*
 Vehicles API keys can:
-- [ ] Notify location
+- [X] Notify location
 - [ ] Create route
 - [ ] Cancel route
 - [ ] Complete route
@@ -58,11 +58,11 @@ Admin user can:
 - [X] CRUD users
 - [X] CRUD vehicles
 - [X] CRUD API keys
-- [ ] Monitor location
+- [X] Monitor location
 - [ ] Export data
 
 Manager user can:
-- [ ] Monitor location
+- [X] Monitor location
 - [ ] Export data
 */
 const (
