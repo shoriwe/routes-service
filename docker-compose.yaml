@@ -20,7 +20,7 @@ services:
     command:
       [
         "-c",
-        "/server --database 'postgres://host=server-postgres user=sulcud password=sulcud dbname=sulcud port=5432 sslmode=disable' :5000"
+        "/server --database 'postgres://host=server-postgres user=routes password=routes dbname=routes port=5432 sslmode=disable' :5000"
       ]
 
   postgres:
