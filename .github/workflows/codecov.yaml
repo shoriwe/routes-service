@@ -27,3 +27,7 @@ jobs:
         run: docker compose -f testing.docker-compose.yaml down --rmi all -v --remove-orphans
       
       - uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage.txt
+          fail_ci_if_error: true
