@@ -32,6 +32,6 @@ services:
     ports:
       - "127.0.0.1:5432:5432"
     environment:
-      POSTGRES_DB: sulcud
-      POSTGRES_USER: sulcud
-      POSTGRES_PASSWORD: sulcud
+      POSTGRES_DB: routes
+      POSTGRES_USER: routes
+      POSTGRES_PASSWORD: routes
