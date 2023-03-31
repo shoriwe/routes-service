@@ -1,6 +1,8 @@
 package controller
 
 import (
+	"sync"
+
 	"github.com/shoriwe/routes-service/common/random"
 	"github.com/shoriwe/routes-service/common/session"
 	"github.com/shoriwe/routes-service/common/sqlite"
@@ -14,6 +16,7 @@ type Controller struct {
 	Session *session.JWT
 	DB      *gorm.DB
 	Map     *maps.Map
+	Workers sync.Map
 }
 
 func (c *Controller) Close() {

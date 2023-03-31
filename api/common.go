@@ -2,6 +2,7 @@ package api
 
 const (
 	CredentialsKey = "CREDENTIALS_KEY"
+	APIKeyKey      = "APIKEY_KEY"
 )
 
 type Status struct {
@@ -25,7 +26,8 @@ var (
 )
 
 const (
-	RootRoute = "/api"
+	RootRoute = "/"
+	APIRoute  = "/api"
 )
 
 const (
@@ -44,7 +46,9 @@ const (
 /*
 Vehicles API keys can:
 - [ ] Notify location
-- [ ] Plan route
+- [ ] Create route
+- [ ] Cancel route
+- [ ] Complete route
 
 Public
 - [X] Download map
@@ -71,7 +75,8 @@ const (
 	VehicleRouteWithParams = VehicleRoute + "/:" + UUIDParam
 	APIKeyRoute            = "/keys"
 	APIKeyRouteWithParams  = APIKeyRoute + "/:" + UUIDParam
-	LocationRoute          = "/location"
+	LocationProducerRoute  = "/location/producer"
+	LocationConsumerRoute  = "/location/consumer"
 	ExportRoute            = "/export"
 	RoutePlanningRoute     = "/route"
 )

@@ -16,7 +16,23 @@ type JWTResponse struct {
 
 var bearer = regexp.MustCompile(`(?m)^Bearer\s+`)
 
-func (h *Handler) checkJWT(ctx *gin.Context) {
+func (h *Handler) CheckAPIKey(ctx *gin.Context) {
+	tokenBase64 := bearer.ReplaceAllString(ctx.GetHeader("Authorization"), "")
+	tokenBytes, dErr := base64.StdEncoding.DecodeString(tokenBase64)
+	if dErr != nil {
+		ctx.AbortWithStatusJSON(http.StatusUnauthorized, Status{Succeed: false, Error: dErr.Error()})
+		return
+	}
+	apiKey, aErr := h.Controller.AuthorizeAPIKey(string(tokenBytes))
+	if aErr != nil {
+		ctx.AbortWithStatusJSON(http.StatusUnauthorized, Status{Succeed: false, Error: aErr.Error()})
+		return
+	}
+	ctx.Set(APIKeyKey, apiKey)
+	ctx.Next()
+}
+
+func (h *Handler) CheckJWT(ctx *gin.Context) {
 	tokenBase64 := bearer.ReplaceAllString(ctx.GetHeader("Authorization"), "")
 	tokenBytes, dErr := base64.StdEncoding.DecodeString(tokenBase64)
 	if dErr != nil {
@@ -32,7 +48,7 @@ func (h *Handler) checkJWT(ctx *gin.Context) {
 	ctx.Next()
 }
 
-func (h *Handler) onlyAdmin(ctx *gin.Context) {
+func (h *Handler) OnlyAdmin(ctx *gin.Context) {
 	user := ctx.MustGet(CredentialsKey).(*models.User)
 	if user.Type != models.Admin {
 		ctx.AbortWithStatusJSON(http.StatusForbidden, ForbiddenStatus)

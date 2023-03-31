@@ -32,7 +32,7 @@ func TestController_Login(t *testing.T) {
 	})
 }
 
-func TestController_Authorize(t *testing.T) {
+func TestController_AuthorizeUser(t *testing.T) {
 	c := NewTest()
 	defer c.Close()
 	user := random.User()
@@ -52,5 +52,26 @@ func TestController_Authorize(t *testing.T) {
 	t.Run("InvalidJWT", func(tt *testing.T) {
 		_, aErr := c.AuthorizeUser("INVALID")
 		assert.NotNil(tt, aErr)
+	})
+}
+
+func TestController_AuthorizeAPIKey(t *testing.T) {
+	c := NewTest()
+	defer c.Close()
+	vehicle := random.Vehicle()
+	assert.Nil(t, c.CreateVehicle(vehicle))
+	ak := &models.APIKey{
+		VehicleUUID: vehicle.UUID,
+	}
+	assert.Nil(t, c.CreateAPIKey(ak))
+	t.Run("ValidCredentials", func(tt *testing.T) {
+		key, qErr := c.AuthorizeAPIKey(ak.Key)
+		assert.Nil(t, qErr)
+		assert.Equal(t, ak.UUID, key.UUID)
+	})
+	t.Run("InvalidCredentials", func(tt *testing.T) {
+		key, qErr := c.AuthorizeAPIKey("sdjfhiou2ehi")
+		assert.NotNil(t, qErr)
+		assert.NotEqual(t, ak.UUID, key.UUID)
 	})
 }

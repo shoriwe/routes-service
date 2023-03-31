@@ -44,3 +44,9 @@ func (c *Controller) AuthorizeUser(tokenString string) (*models.User, error) {
 	}
 	return credentials, nil
 }
+
+func (c *Controller) AuthorizeAPIKey(tokenString string) (*models.APIKey, error) {
+	ak := &models.APIKey{}
+	qErr := c.DB.Where("key = ?", tokenString).First(ak).Error
+	return ak, qErr
+}
