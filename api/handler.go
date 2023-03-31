@@ -42,6 +42,9 @@ func New(c *controller.Controller) *gin.Engine {
 	admin.PATCH(VehicleRoute, h.UpdateVehicle)
 	admin.POST(VehicleRoute, h.QueryVehicles)
 	// -- API's CRUD
+	admin.PUT(APIKeyRoute, h.CreateAPIKey)
+	admin.DELETE(APIKeyRouteWithParams, h.DeleteAPIKey)
+	admin.POST(APIKeyRoute, h.QueryAPIKeys)
 	// - Vehicles
 	return engine
 }
