@@ -12,7 +12,7 @@ import (
 func TestController_CreateVehicle(t *testing.T) {
 	c := NewTest()
 	defer c.Close()
-	t.Run("ValidCredentials", func(tt *testing.T) {
+	t.Run("ValidVehicle", func(tt *testing.T) {
 		vehicle := random.Vehicle()
 		assert.Nil(tt, c.CreateVehicle(vehicle))
 	})
