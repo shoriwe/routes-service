@@ -1,5 +1,9 @@
 # routes-service
 
+[![Build](https://github.com/shoriwe/routes-service/actions/workflows/build.yaml/badge.svg)](https://github.com/shoriwe/routes-service/actions/workflows/build.yaml)
+[![codecov](https://codecov.io/gh/shoriwe/routes-service/branch/main/graph/badge.svg?token=SMCRWGJ4C5)](https://codecov.io/gh/shoriwe/routes-service)
+
+
 ## Run
 
 You can find compiled binaries on the [Release](https://github.com/shoriwe/routes-service/releases) section.
