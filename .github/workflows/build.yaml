@@ -100,6 +100,7 @@ jobs:
 
   release-docker:
     permissions:
+      contents: read
       packages: write
     needs:
       - versioning
