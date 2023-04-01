@@ -2,7 +2,8 @@
 
 [![Build](https://github.com/shoriwe/routes-service/actions/workflows/build.yaml/badge.svg)](https://github.com/shoriwe/routes-service/actions/workflows/build.yaml)
 [![codecov](https://codecov.io/gh/shoriwe/routes-service/branch/main/graph/badge.svg?token=SMCRWGJ4C5)](https://codecov.io/gh/shoriwe/routes-service)
-
+![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/shoriwe/routes-service)
+[![Go Report Card](https://goreportcard.com/badge/github.com/shoriwe/routes-service)](https://goreportcard.com/report/github.com/shoriwe/routes-service)
 
 ## Run
 
